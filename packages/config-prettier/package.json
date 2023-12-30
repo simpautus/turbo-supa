@@ -1,0 +1,19 @@
+{
+  "name": "@repo/prettier-config",
+  "private": true,
+  "version": "0.0.0",
+  "main": "index.mjs",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "clean": "git clean -xdf node_modules .turbo",
+    "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.10"
+  },
+  "prettier": "@repo/prettier-config"
+}

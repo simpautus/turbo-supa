@@ -1,0 +1,61 @@
+{
+  "name": "supaturbo",
+  "private": true,
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "build": "dotenv -- turbo build",
+    "clean": "pnpm clean:workspaces && pnpm clean:root",
+    "clean:workspaces": "turbo clean",
+    "clean:root": "git clean -xdf node_modules dist .next .turbo && turbo daemon stop",
+    "dev": "dotenv -- turbo dev --parallel",
+    "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
+    "format:fix": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
+    "lint": "turbo lint --filter='!@repo/supabase' --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache'",
+    "lint:fix": "turbo lint --filter='!@repo/supabase' --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache'",
+    "typecheck": "turbo typecheck",
+    "validate": "pnpm format:fix && pnpm lint:fix && pnpm typecheck",
+    "ui:add": "pnpm --filter @repo/ui ui:add",
+    "db:migration:new": "pnpm --filter @repo/supabase db:migration:new",
+    "db:deploy": "dotenv -- turbo db:deploy",
+    "db:generate": "turbo db:generate",
+    "db:start": "pnpm --filter @repo/supabase db:start",
+    "db:reset": "pnpm --filter @repo/supabase db:reset",
+    "db:stop": "pnpm --filter @repo/supabase db:stop",
+    "deps": "pnpm up -r -i --depth 1"
+  },
+  "dependencies": {
+    "next": "^14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/prettier-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.3.0",
+    "typescript": "^5.3.3"
+  },
+  "prettier": "@repo/prettier-config",
+  "eslintConfig": {
+    "root": true,
+    "ignorePatterns": [
+      "apps/**",
+      "packages/**"
+    ],
+    "extends": [
+      "@repo/eslint-config/base"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": true
+    }
+  }
+}

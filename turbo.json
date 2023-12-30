@@ -1,0 +1,48 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalDotEnv": [".env"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "format": {
+      "outputs": ["node_modules/.cache/.prettiercache"],
+      "outputMode": "new-only"
+    },
+    "lint": {
+      "outputs": ["node_modules/.cache/.eslintcache"]
+    },
+    "typecheck": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    },
+    "@repo/supabase#db:start": {
+      "outputs": [],
+      "cache": false
+    },
+    "db:start": {
+      "outputs": []
+    },
+    "db:generate": {
+      "dependsOn": ["^db:generate"],
+      "outputs": []
+    },
+    "@repo/types#db:generate": {
+      "dependsOn": ["@repo/supabase#db:start", "^db:generate"],
+      "outputs": []
+    },
+    "@repo/supabase#db:lint": {
+      "dependsOn": ["@repo/supabase#db:start"],
+      "outputs": []
+    },
+    "db:deploy": {
+      "outputs": []
+    }
+  }
+}

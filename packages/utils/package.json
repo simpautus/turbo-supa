@@ -1,0 +1,30 @@
+{
+  "name": "@repo/utils",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "clean": "git clean -xdf node_modules .turbo",
+    "lint": "eslint .",
+    "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.0.10",
+    "@supabase/supabase-js": "^2.39.1"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/prettier-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/types": "workspace:*"
+  },
+  "prettier": "@repo/prettier-config",
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@repo/eslint-config/base",
+      "@repo/eslint-config/react"
+    ]
+  }
+}
