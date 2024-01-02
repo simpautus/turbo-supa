@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@supabase/ssr": "^0.0.10",
-    "@supabase/supabase-js": "^2.39.1"
+    "@supabase/supabase-js": "^2.39.2"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/prettier-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/types": "workspace:*"
+    "@repo/types": "workspace:*",
+    "@repo/typescript-config": "workspace:*"
   },
   "prettier": "@repo/prettier-config",
   "eslintConfig": {
