@@ -1,29 +1,19 @@
-import { cookies } from 'next/headers'
+import { Logo } from '@/components/logo'
 
-import { ModeToggle } from '@repo/ui/components/mode-toggle'
-import { Button } from '@repo/ui/components/ui/button'
-import { createClient } from '@repo/utils/supabase/server'
-
-export const dynamic = 'force-dynamic'
-
-export default async function Page() {
-  const cookieStore = cookies()
-  const supabase = createClient(cookieStore)
-
-  const { data: notes, error } = await supabase.from('notes').select('*')
-
-  if (error) {
-    return <pre>{JSON.stringify(error, null, 2)}</pre>
-  }
-
+export default function Page() {
   return (
-    <div className='my-24 flex flex-col items-center gap-y-12'>
-      <h1 className='text-3xl font-semibold tracking-tight'>Next App 1</h1>
-      <Button className='mx-auto' size='sm'>
-        Button
-      </Button>
-      <ModeToggle />
-      <pre>{JSON.stringify(notes, null, 2)}</pre>
+    <div className='mx-auto flex w-full flex-col justify-center space-y-6'>
+      <div className='flex flex-col items-center space-y-6 text-center'>
+        <Logo className='-mt-24 mb-12 h-24 w-24' />
+        <h1 className='text-2xl font-semibold tracking-tight'>Turbo-Supa</h1>
+        <p className='text-sm text-muted-foreground'>
+          Demo monorepo using Turborepo and shared Supabase auth for multiple
+          Next.js apps.
+        </p>
+        <p className='text-sm text-muted-foreground'>
+          Users can see their notes after signed in.
+        </p>
+      </div>
     </div>
   )
 }
