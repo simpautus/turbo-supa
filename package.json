@@ -1,33 +1,49 @@
 {
   "name": "turbo-supa",
   "private": true,
-  "packageManager": "pnpm@8.9.0",
-  "engines": {
-    "node": ">=18"
-  },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "dotenv -- turbo build",
-    "cleanup": "pnpm clean:workspaces && turbo daemon stop",
     "clean": "git clean -xdf node_modules dist .next .turbo",
     "clean:workspaces": "turbo clean",
-    "dev": "dotenv -- turbo dev --parallel",
-    "format": "prettier . --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
-    "format:workspaces": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache'",
-    "format:fix": "pnpm format:workspaces --write",
-    "lint": "eslint . --no-error-on-unmatched-pattern",
-    "lint:workspaces": "turbo lint --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache'",
-    "lint:fix": "pnpm lint:workspaces --fix",
-    "typecheck": "turbo typecheck",
-    "validate": "pnpm format:fix && pnpm lint:fix && pnpm typecheck",
-    "ui:add": "pnpm --filter @repo/ui ui:add",
-    "db:migration:new": "pnpm --filter @repo/supabase db:migration:new",
+    "cleanup": "pnpm clean:workspaces && turbo daemon stop",
     "db:deploy": "dotenv -- turbo db:deploy",
     "db:generate": "turbo db:generate",
-    "db:start": "pnpm --filter @repo/supabase db:start",
+    "db:migration:new": "pnpm --filter @repo/supabase db:migration:new",
     "db:reset": "pnpm --filter @repo/supabase db:reset",
+    "db:start": "pnpm --filter @repo/supabase db:start",
     "db:stop": "pnpm --filter @repo/supabase db:stop",
-    "deps": "pnpm up -r -i --depth 1"
+    "dev": "dotenv -- turbo dev --parallel",
+    "format": "prettier . --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
+    "format:fix": "pnpm format:workspaces --write",
+    "format:workspaces": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache'",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint . --no-error-on-unmatched-pattern",
+    "lint:fix": "pnpm lint:workspaces --fix",
+    "lint:workspaces": "turbo lint --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache'",
+    "packages-fix-mismatches": "syncpack fix-mismatches && pnpm install",
+    "packages-list": "syncpack list",
+    "packages-list-mismatches": "syncpack list-mismatches",
+    "packages-sort": "sort-package-json 'package.json' 'supabase/package.json' 'packages/*/package.json' 'tooling/*/package.json' 'apps/*/package.json'",
+    "packages-update": "pnpm up -r -i --depth 1",
+    "typecheck": "turbo typecheck",
+    "ui:add": "pnpm --filter @repo/ui ui:add",
+    "validate": "pnpm format:fix && pnpm lint:fix && pnpm typecheck"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": true
+    },
+    "extends": [
+      "@repo/eslint-config/base"
+    ],
+    "ignorePatterns": [
+      "apps/**",
+      "packages/**",
+      "supabase/**",
+      "tooling/**"
+    ],
+    "root": true
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -103,23 +119,13 @@
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.10",
+    "sort-package-json": "^2.6.0",
+    "syncpack": "^12.3.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.3"
   },
-  "eslintConfig": {
-    "root": true,
-    "ignorePatterns": [
-      "apps/**",
-      "packages/**",
-      "supabase/**",
-      "tooling/**"
-    ],
-    "extends": [
-      "@repo/eslint-config/base"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "project": true
-    }
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
   }
 }

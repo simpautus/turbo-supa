@@ -1,17 +1,17 @@
 {
   "name": "@repo/prettier-config",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "main": "index.mjs",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "clean": "git clean -xdf node_modules .turbo",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
+    "preinstall": "npx only-allow pnpm",
     "typecheck": "tsc --noEmit"
   },
+  "prettier": "@repo/prettier-config",
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "@ianvs/prettier-plugin-sort-imports": "^4.1.1"
-  },
-  "prettier": "@repo/prettier-config"
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+    "@repo/typescript-config": "workspace:*"
+  }
 }

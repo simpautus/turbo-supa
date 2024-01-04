@@ -5,22 +5,22 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
-    "db:generate": "(cd ../../supabase/ && pnpm supabase gen types typescript --local > ../packages/types/src/database.ts) && prettier --write \"src/**/*.{ts,tsx,md}\"",
     "clean": "git clean -xdf .turbo node_modules",
+    "db:generate": "(cd ../../supabase/ && pnpm supabase gen types typescript --local > ../packages/types/src/database.ts) && prettier --write \"src/**/*.{ts,tsx,md}\"",
     "format": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
-	"devDependencies": {
+  "prettier": "@repo/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@repo/eslint-config/base"
+    ],
+    "root": true
+  },
+  "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/prettier-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"
-	},
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@repo/eslint-config/base"
-    ]
-  },
-  "prettier": "@repo/prettier-config"
+  }
 }

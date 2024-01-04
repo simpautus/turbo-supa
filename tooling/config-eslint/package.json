@@ -3,21 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "clean": "git clean -xdf node_modules .turbo",
-    "lint": "eslint .",
     "format": "prettier --check \"**/*.{js,json}\"",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
+  },
+  "prettier": "@repo/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@repo/eslint-config/base"
+    ],
+    "root": true
   },
   "devDependencies": {
     "@repo/prettier-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"
-  },
-  "prettier": "@repo/prettier-config",
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@repo/eslint-config/base"
-    ]
   }
 }

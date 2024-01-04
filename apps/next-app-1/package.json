@@ -3,13 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "dev": "next dev --port 3001",
     "build": "next build",
-    "lint": "next lint",
     "clean": "git clean -xdf .next .turbo node_modules",
+    "dev": "next dev --port 3001",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "next lint",
     "typecheck": "tsc --noEmit"
+  },
+  "prettier": "@repo/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@repo/eslint-config/base",
+      "@repo/eslint-config/nextjs",
+      "@repo/eslint-config/react"
+    ],
+    "root": true
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
@@ -20,14 +29,5 @@
     "@repo/prettier-config": "workspace:*",
     "@repo/types": "workspace:*",
     "@repo/typescript-config": "workspace:*"
-  },
-  "prettier": "@repo/prettier-config",
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@repo/eslint-config/base",
-      "@repo/eslint-config/nextjs",
-      "@repo/eslint-config/react"
-    ]
   }
 }
