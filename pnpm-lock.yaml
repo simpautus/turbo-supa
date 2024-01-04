@@ -158,13 +158,13 @@ importers:
         version: 14.0.4
       '@repo/eslint-config':
         specifier: workspace:*
-        version: link:packages/config-eslint
+        version: link:tooling/config-eslint
       '@repo/prettier-config':
         specifier: workspace:*
-        version: link:packages/config-prettier
+        version: link:tooling/config-prettier
       '@repo/typescript-config':
         specifier: workspace:*
-        version: link:packages/config-typescript
+        version: link:tooling/config-typescript
       '@types/eslint':
         specifier: ^8.56.1
         version: 8.56.1
@@ -240,18 +240,72 @@ importers:
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
-        version: link:../../packages/config-eslint
+        version: link:../../tooling/config-eslint
       '@repo/prettier-config':
         specifier: workspace:*
-        version: link:../../packages/config-prettier
+        version: link:../../tooling/config-prettier
       '@repo/types':
         specifier: workspace:*
         version: link:../../packages/types
       '@repo/typescript-config':
         specifier: workspace:*
-        version: link:../../packages/config-typescript
+        version: link:../../tooling/config-typescript
 
-  packages/config-eslint:
+  packages/types:
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-eslint
+      '@repo/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-prettier
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-typescript
+
+  packages/ui:
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-eslint
+      '@repo/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-prettier
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-typescript
+
+  packages/utils:
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-eslint
+      '@repo/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-prettier
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../types
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-typescript
+
+  supabase:
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../tooling/config-eslint
+      '@repo/prettier-config':
+        specifier: workspace:*
+        version: link:../tooling/config-prettier
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../tooling/config-typescript
+      supabase:
+        specifier: ^1.127.4
+        version: 1.127.4
+
+  tooling/config-eslint:
     devDependencies:
       '@repo/prettier-config':
         specifier: workspace:*
@@ -260,7 +314,7 @@ importers:
         specifier: workspace:*
         version: link:../config-typescript
 
-  packages/config-prettier:
+  tooling/config-prettier:
     devDependencies:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.1.1
@@ -269,61 +323,7 @@ importers:
         specifier: workspace:*
         version: link:../config-typescript
 
-  packages/config-typescript: {}
-
-  packages/types:
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../config-eslint
-      '@repo/prettier-config':
-        specifier: workspace:*
-        version: link:../config-prettier
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../config-typescript
-
-  packages/ui:
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../config-eslint
-      '@repo/prettier-config':
-        specifier: workspace:*
-        version: link:../config-prettier
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../config-typescript
-
-  packages/utils:
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../config-eslint
-      '@repo/prettier-config':
-        specifier: workspace:*
-        version: link:../config-prettier
-      '@repo/types':
-        specifier: workspace:*
-        version: link:../types
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../config-typescript
-
-  supabase:
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../packages/config-eslint
-      '@repo/prettier-config':
-        specifier: workspace:*
-        version: link:../packages/config-prettier
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../packages/config-typescript
-      supabase:
-        specifier: ^1.127.4
-        version: 1.127.4
+  tooling/config-typescript: {}
 
 packages:
 

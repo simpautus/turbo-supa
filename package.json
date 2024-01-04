@@ -111,7 +111,8 @@
     "ignorePatterns": [
       "apps/**",
       "packages/**",
-      "supabase/**"
+      "supabase/**",
+      "tooling/**"
     ],
     "extends": [
       "@repo/eslint-config/base"
