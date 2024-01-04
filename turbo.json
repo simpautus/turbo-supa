@@ -9,18 +9,32 @@
     },
     "format": {
       "outputs": ["node_modules/.cache/.prettiercache"],
-      "outputMode": "new-only"
+      "outputMode": "errors-only"
+    },
+    "//#format": {
+      "outputs": ["node_modules/.cache/.prettiercache"],
+      "outputMode": "errors-only"
     },
     "lint": {
-      "outputs": ["node_modules/.cache/.eslintcache"]
+      "outputs": ["node_modules/.cache/.eslintcache"],
+      "outputMode": "errors-only"
     },
-    "typecheck": {},
-    "dev": {
-      "cache": false,
-      "persistent": true
+    "//#lint": {
+      "outputs": ["node_modules/.cache/.eslintcache"],
+      "outputMode": "errors-only"
+    },
+    "typecheck": {
+      "outputMode": "errors-only"
     },
     "clean": {
       "cache": false
+    },
+    "//#clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
     },
     "@repo/supabase#db:start": {
       "outputs": [],

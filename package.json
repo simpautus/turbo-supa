@@ -8,14 +8,16 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "dotenv -- turbo build",
-    "clean": "pnpm clean:workspaces && pnpm clean:root",
+    "cleanup": "pnpm clean:workspaces && turbo daemon stop",
+    "clean": "git clean -xdf node_modules dist .next .turbo",
     "clean:workspaces": "turbo clean",
-    "clean:root": "git clean -xdf node_modules dist .next .turbo && turbo daemon stop",
     "dev": "dotenv -- turbo dev --parallel",
-    "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
-    "format:fix": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
-    "lint": "turbo lint --filter='!@repo/supabase' --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache'",
-    "lint:fix": "turbo lint --filter='!@repo/supabase' --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache'",
+    "format": "prettier . --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
+    "format:workspaces": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache'",
+    "format:fix": "pnpm format:workspaces --write",
+    "lint": "eslint . --no-error-on-unmatched-pattern",
+    "lint:workspaces": "turbo lint --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache'",
+    "lint:fix": "pnpm lint:workspaces --fix",
     "typecheck": "turbo typecheck",
     "validate": "pnpm format:fix && pnpm lint:fix && pnpm typecheck",
     "ui:add": "pnpm --filter @repo/ui ui:add",
@@ -28,7 +30,7 @@
     "deps": "pnpm up -r -i --depth 1"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.3.3",
+    "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -104,12 +106,12 @@
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.3"
   },
-  "prettier": "@repo/prettier-config",
   "eslintConfig": {
     "root": true,
     "ignorePatterns": [
       "apps/**",
-      "packages/**"
+      "packages/**",
+      "supabase/**"
     ],
     "extends": [
       "@repo/eslint-config/base"
