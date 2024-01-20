@@ -36,19 +36,22 @@ export interface Database {
     Tables: {
       notes: {
         Row: {
+          content: string | null
           id: number
           profile_id: string | null
-          title: string | null
+          title: string
         }
         Insert: {
+          content?: string | null
           id?: never
           profile_id?: string | null
-          title?: string | null
+          title: string
         }
         Update: {
+          content?: string | null
           id?: never
           profile_id?: string | null
-          title?: string | null
+          title?: string
         }
         Relationships: [
           {

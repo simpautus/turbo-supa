@@ -1,12 +1,8 @@
 import { cookies } from 'next/headers'
-import { StickyNoteIcon } from 'lucide-react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from '@repo/ui/components/ui/alert'
 import { createClient } from '@repo/utils/supabase/server'
+
+import { Note } from './_components/note'
 
 // Opt out of caching for all data requests in the route segment
 export const dynamic = 'force-dynamic'
@@ -23,13 +19,9 @@ export default async function Page() {
         <p className='text-sm text-muted-foreground'>
           Your notes from the Supabase.
         </p>
-        <div className='grid gap-2'>
-          {notes?.map((note) => (
-            <Alert key={note.id}>
-              <StickyNoteIcon className='h-4 w-4' />
-              <AlertTitle>Note</AlertTitle>
-              <AlertDescription>{note.title}</AlertDescription>
-            </Alert>
+        <div className='grid w-full max-w-md gap-3'>
+          {notes?.map(({ id, title, content }) => (
+            <Note key={id} title={title} content={content} />
           ))}
         </div>
       </div>

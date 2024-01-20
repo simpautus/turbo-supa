@@ -28,11 +28,11 @@ insert into public.profiles (id, display_name)
   values ('e6058751-75dc-4831-b773-dd6e0c821963', 'Test User 2');
 
  -- Insert some sample notes
- insert into notes (profile_id, title)
+ insert into notes (profile_id, title, content)
  values
-   ('059b89cf-0417-4692-abdf-cb065496ea4c', 'Today I created a Supabase project.'),
-   ('059b89cf-0417-4692-abdf-cb065496ea4c', 'I added some data and queried it from Next.js.'),
-   ('059b89cf-0417-4692-abdf-cb065496ea4c', 'It was awesome!'),
-   ('e6058751-75dc-4831-b773-dd6e0c821963', 'Note to self: buy milk.'),
-	 ('e6058751-75dc-4831-b773-dd6e0c821963', 'Note to self: buy eggs.'),
-	 ('e6058751-75dc-4831-b773-dd6e0c821963', 'Note to self: buy bread.');		 
+   ('059b89cf-0417-4692-abdf-cb065496ea4c', 'Great day', 'Today I created a Supabase project.'),
+   ('059b89cf-0417-4692-abdf-cb065496ea4c', 'Tried something', 'I added some data and queried it from Next.js.'),
+   ('059b89cf-0417-4692-abdf-cb065496ea4c', 'Outcome', 'It was awesome!'),
+   ('e6058751-75dc-4831-b773-dd6e0c821963', 'Note to self 1', 'Buy milk.'),
+	 ('e6058751-75dc-4831-b773-dd6e0c821963', 'Note to self 2', 'Buy eggs.'),
+	 ('e6058751-75dc-4831-b773-dd6e0c821963', 'Note to self 3', 'Buy bread.');		 

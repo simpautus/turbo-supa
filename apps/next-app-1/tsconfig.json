@@ -5,9 +5,9 @@
     "paths": {
       "@/*": ["./*"],
       "@repo/ui/*": ["../../packages/ui/*"],
-      "@repo/utils/*": ["../../packages/utils/*"]
-    }
+      "@repo/utils/*": ["../../packages/utils/*"],
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
