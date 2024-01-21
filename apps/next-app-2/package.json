@@ -1,11 +1,11 @@
 {
-  "name": "@repo/next-app-1",
+  "name": "@repo/next-app-2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "next build",
     "clean": "git clean -xdf .next .turbo node_modules certificates",
-    "dev": "next dev -p 3001 -H app1.example.dev --experimental-https",
+    "dev": "next dev -p 3002 -H app2.example.dev --experimental-https",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
     "preinstall": "npx only-allow pnpm",
     "lint": "next lint",

@@ -257,6 +257,28 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/config-typescript
 
+  apps/next-app-2:
+    dependencies:
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@repo/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-eslint
+      '@repo/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-prettier
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/config-typescript
+
   packages/types:
     devDependencies:
       '@repo/eslint-config':
