@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "clean": "git clean -xdf .next .turbo node_modules certificates",
+    "clean": "git clean -fxd",
     "dev": "next dev -p 3001 -H app1.example.dev --experimental-https",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
     "preinstall": "npx only-allow pnpm",
